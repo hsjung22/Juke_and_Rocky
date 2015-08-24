@@ -1,0 +1,41 @@
+<div ng-controller="availabilitiesController">
+
+<a href="#/">Logout</a>
+<h1>This is index page</h1>
+
+<a href="#/create">Create</a>
+
+
+<p>list of available daycares</p>
+<input type="text" ng-model="filter_daycare" placeholder="search daycares">
+
+
+<table>
+	<thead>
+		<tr>
+			<th>name</th>
+			<th>Daycare name</th>
+			<th>Location</th>
+			<th>about</th>
+			<th>price</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat = "avail in availabilities | filter: filter_daycare">
+			<td>{{avail.name}}</td>
+			<td>{{avail.daycare_name}}</td>
+			<td>{{avail.address}}</td>
+			<td>{{avail.about}}</td>
+			<td>{{avail.price}}</td>
+			<td><a href="#/show/{{avail._id}}">Details (show page)</a></td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+
+
+
+
+</div>

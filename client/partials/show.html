@@ -1,0 +1,40 @@
+<div ng-controller="showController">
+
+
+<h1>THis is the show page</h1>
+
+<a href="#/index">Back</a>
+<br>
+
+
+			<p>{{availability.daycare_name}}</p>
+			<!-- <p>{{availability.address}}</p> -->
+			<p>{{availability.about}}</p>
+			<p>{{availability.price}}</p>
+
+
+
+			<section>
+				<iframe
+					width="600"
+					height="450"
+					frameborder="0" style="border:0"
+					ng-src="{{someUrl}}" allowfullscreen>
+				</iframe>
+			</section>
+
+<p>details regarding details like map and shit</p>
+
+
+<p>Book it!</p>
+<a href="#/appointments/{{availability._id}}/create">create appointment</a>
+
+<br>
+
+<p>you can only edit if you are the user=logged in user</p>
+
+<div ng-if="currentUser == availability.name">
+	<a href="#/{{availability._id}}/edit">Edit</a>
+</div>
+
+</div>

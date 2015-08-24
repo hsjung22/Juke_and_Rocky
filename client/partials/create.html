@@ -1,0 +1,26 @@
+<div ng-controller="availabilitiesController">
+
+
+<h1>This is create page where you create your availability+ details</h1>
+<p>Name should be prefilled {{currentUser}}</p>
+
+
+<form>
+	<label>Daycare name:</label>
+	<input type="text" ng-model="newAvailability.daycare_name"><br>
+	<label>Address:</label>
+	<input type="text" ng-model="newAvailability.address"><br>
+	<label>price:</label>
+	<input type="text" ng-model="newAvailability.price"><br>
+	<label>email:</label>
+	<input type="email" ng-model="newAvailability.email"><br>
+	<label>Availability details:</label>
+	<textarea ng-model="newAvailability.about"></textarea><br>
+	<input type="submit" value="Create" ng-click="addAvailability()">
+</form>
+
+
+<a href="#/index">Back to index</a>
+
+
+</div>
