@@ -1,4 +1,5 @@
 var availabilities = require('./../controller/availabilities.js');
+var reviews = require('./../controller/reviews.js');
 
 
 module.exports = function(app) {
@@ -20,6 +21,22 @@ module.exports = function(app) {
 		availabilities.destroy(req,res);
 	});
 
+	app.put('/update/:id', function (req,res){
+		availabilities.update(req,res);
+	});
+
+//reviews
+	app.post('/create_review/:id', function (req,res){
+		reviews.save(req,res);
+	});
+
+	app.get('/reviews/:id', function (req,res){
+		reviews.showOne(req,res);
+	});
+
+	app.put('/likes/', function (req,res){
+		reviews.updateLike(req,res);;
+	})
 
 
 };

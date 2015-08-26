@@ -1,6 +1,33 @@
 <div ng-controller="showController">
 
 
+<h3>Reviews</h3>
+
+	<form>
+		<textarea palceholder="reviews" ng-model="newReview.review"></textarea>
+		<input type="submit" value="Review" ng-click="addReview()">
+	</form>
+
+	<br><br>
+
+	<table>
+		<tbody>
+			<tr ng-repeat = "review in availability.reviews | orderBy: 'date' | orderBy: '-like' ">
+				<td>{{review.name}}</td>
+				<td>{{review.review}}</td>
+				<td>{{review.date | date: 'MMMM d yyyy'}}</td>
+				<td>{{review.like}} like(s)
+					<button ng-click = 'addLike(review._id)' class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span></button>
+				</td>
+			</tr>	
+		</tbody>
+	</table>
+
+
+
+
+
+
 <h1>THis is the show page</h1>
 
 <a href="#/index">Back</a>

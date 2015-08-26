@@ -24,7 +24,7 @@ module.exports = {
 	},
 
 	showOne: function(req,res){
-		Availability.findOne({_id: req.params.id}, function (err,results) {
+		Availability.findOne({_id: req.params.id}).populate('reviews').exec(function (err, results) {
 			if(err){
 				console.log(err);
 			} else {
@@ -34,12 +34,23 @@ module.exports = {
 	},
 
 	destroy: function(req,res){
-		Availability.remove(req.body, function (err, customers){
+		Availability.remove(req.body, function (err, results){
 			if (err){
 				console.log(err);
 			} else {
 				console.log('successfully deleted');
 				res.end();
+			}
+		})
+	},
+
+	update: function(req,res){
+		Availability.update({_id: req.params.id}, req.body, function (err, updates){
+			if(err){
+				console.log(err);
+			} else {
+				console.log('successfully updated');
+				res.json(updates);
 			}
 		})
 	}

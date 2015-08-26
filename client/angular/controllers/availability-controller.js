@@ -1,7 +1,6 @@
 myAppModule.controller('availabilitiesController', function ($scope, availabilityFactory){
 
-
-
+	availabilityFactory.addUser(user);
 
 	availabilityFactory.getUser(function (data) {
 		$scope.currentUser = data;
@@ -11,15 +10,11 @@ myAppModule.controller('availabilitiesController', function ($scope, availabilit
 		$scope.availabilities = data;
 	});
 
-
-
 	$scope.addAvailability = function (){
 		availabilityFactory.addAvailability($scope.newAvailability, function (data) {
 			$scope.availabilities = data;
 		})
 		$scope.newAvailability = {};
 	};
-
-
 
 })

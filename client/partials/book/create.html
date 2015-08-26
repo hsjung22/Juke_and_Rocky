@@ -1,8 +1,21 @@
 <div ng-controller="showController">
 
-<h1>This is create appointment page</h1>
+<h1>Send {{availability.name}} an Email and book a session!</h1>
 
-<p>{{availability._id}}</p>
+<form ng-action="MAILTO:{{sendEmail}}" method="post" enctype="text/plain">
+	<label>Name:</label>
+	<input type="text" name="name" value="{{currentUser}}"> </br>
+	<label>mail:</label>
+	<input type="email" name="mail" placeholder="your_email@example.com"> <br>
+	<label>message:</label>
+	<input type="text" name="message" placeholder="your message!">
+	<input type="submit" value="Send">
+	<input type="reset" value="Reset">
+</form>
+
+
+
+<p>{{availability.email}}</p>
 
 <a href="#/show/{{availability._id}}">Back</a>
 
