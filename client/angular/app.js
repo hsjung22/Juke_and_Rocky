@@ -19,7 +19,7 @@ myAppModule.config(function ($routeProvider) {
 		templateUrl: 'partials/edit.html'
 	})
 
-	.when('/appointments/:id/create/',{
+	.when('/bookings/:id/create/',{
 		templateUrl: 'partials/book/create.html'
 	})
 

@@ -1,14 +1,11 @@
 <div ng-controller="sessionsController">
 	
-<h1>Juke&Rocky</h1>
+	<h1>Juke&Rocky</h1>
 
-
-
-<a href="#/index">Go!</a>
-
-
-
-
-
+	<form>
+		<label>Name:</label>
+		<input type="text" ng-model="newUser">
+		<a href="#/index"><input type="submit" value="Go!" ng-click="addUser()"></a>
+	</form>
 
 </div>

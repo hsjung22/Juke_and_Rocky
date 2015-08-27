@@ -1,23 +1,23 @@
-<div ng-controller="showController">
+<div ng-controller="bookAvailabilityController">
 
-<h1>Send {{availability.name}} an Email and book a session!</h1>
+	<h1>Send {{availability.name}} an Email and book a session!</h1>
 
-<form ng-action="MAILTO:{{sendEmail}}" method="post" enctype="text/plain">
-	<label>Name:</label>
-	<input type="text" name="name" value="{{currentUser}}"> </br>
-	<label>mail:</label>
-	<input type="email" name="mail" placeholder="your_email@example.com"> <br>
-	<label>message:</label>
-	<input type="text" name="message" placeholder="your message!">
-	<input type="submit" value="Send">
-	<input type="reset" value="Reset">
-</form>
+	<form ng-action="MAILTO:{{sendEmail}}" method="post" enctype="text/plain">
+		<label>Name:</label>
+		<input type="text" name="name" value="{{currentUser}}"> </br>
+		<label>mail:</label>
+		<input type="email" name="mail" placeholder="your_email@example.com"> <br>
+		<label>message:</label>
+		<input type="text" name="message" placeholder="your message!">
+		<input type="submit" value="Send">
+		<input type="reset" value="Reset">
+	</form>
 
 
 
-<p>{{availability.email}}</p>
+	<p>{{availability.email}}</p>
 
-<a href="#/show/{{availability._id}}">Back</a>
+	<a href="#/show/{{availability._id}}">Back</a>
 
 
 </div>

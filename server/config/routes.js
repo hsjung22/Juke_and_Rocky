@@ -1,8 +1,22 @@
 var availabilities = require('./../controller/availabilities.js');
 var reviews = require('./../controller/reviews.js');
 
-
 module.exports = function(app) {
+
+//user session
+	app.post('/session', function (req, res){
+		req.session.name = req.body.newUser;
+		res.end();
+	});
+
+	app.get('/session', function (req,res){
+		res.json(req.session.name)
+	});
+
+	app.post('/session_destroy', function (req,res){
+		req.session.destroy();
+		res.end();
+	});
 
 // availabilities
 	app.post('/create', function (req, res) {

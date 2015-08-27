@@ -1,10 +1,12 @@
 var express = require('express');
-var path = require('path');
 var app = express();
+var session = require("express-session");
+var path = require('path');
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, './client')));
+app.use(session({secret: 'codingdojorocks'}));
 
 
 require('./server/config/mongoose.js');

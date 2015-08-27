@@ -1,16 +1,26 @@
 myAppModule.factory('availabilityFactory', function ($http){
 	var factory = {};
-	var user;
 	var availabilities = [];
 	var availability = [];
 	var route_id;
+	var user;
+
 
 	factory.addUser = function(newUser) {
-		user = newUser;
+		$http.post('/session', {newUser: newUser})
+	}
+	
+	factory.getUser = function(callback){
+		$http.get('/session').success(function (output) {
+			user = output;
+			callback(user);
+		})
 	}
 
-	factory.getUser = function(callback){
-		callback(user);
+	factory.removeSession = function () {
+		$http.post('/session_destroy').success(function (){
+			user = '';
+		})
 	}
 
 	factory.getAvailabilities = function (callback) {
@@ -65,6 +75,8 @@ myAppModule.factory('availabilityFactory', function ($http){
 			callback(res);
 		})
 	}
+
+
 
 	return factory;
 

@@ -26,7 +26,7 @@ module.exports = {
 	showOne: function(req,res){
 		Availability.findOne({_id: req.params.id}).populate('reviews').exec(function (err, results) {
 			if(err){
-				console.log(err);
+				console.log({err: err});
 			} else {
 				res.json(results);
 			}

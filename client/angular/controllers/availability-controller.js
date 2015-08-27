@@ -1,20 +1,19 @@
-myAppModule.controller('availabilitiesController', function ($scope, availabilityFactory){
-
-	availabilityFactory.addUser(user);
+myAppModule.controller('availabilitiesController', function ($scope, $location, availabilityFactory){
 
 	availabilityFactory.getUser(function (data) {
 		$scope.currentUser = data;
+		if($scope.currentUser == ''){
+			$location.path('/');
+			$location.replace();
+		}
 	});
 
 	availabilityFactory.getAvailabilities(function (data) {
 		$scope.availabilities = data;
 	});
 
-	$scope.addAvailability = function (){
-		availabilityFactory.addAvailability($scope.newAvailability, function (data) {
-			$scope.availabilities = data;
-		})
-		$scope.newAvailability = {};
-	};
+	$scope.removeSession = function() {
+		availabilityFactory.removeSession();
+	}
 
 })
