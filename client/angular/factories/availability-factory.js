@@ -5,12 +5,14 @@ myAppModule.factory('availabilityFactory', function ($http){
 	var route_id;
 	var user;
 
-
-	factory.addUser = function(newUser) {
-		$http.post('/session', {newUser: newUser})
+//Session
+	factory.addSession = function(newUser, callback) {
+		$http.post('/session', {newUser: newUser}).success(function (res) {
+			callback(res);
+		})
 	}
 	
-	factory.getUser = function(callback){
+	factory.getSession = function(callback){
 		$http.get('/session').success(function (output) {
 			user = output;
 			callback(user);
@@ -23,6 +25,8 @@ myAppModule.factory('availabilityFactory', function ($http){
 		})
 	}
 
+
+//Availability
 	factory.getAvailabilities = function (callback) {
 		$http.get('/availabilities').success(function (output) {
 			availabilities = output;
@@ -39,29 +43,50 @@ myAppModule.factory('availabilityFactory', function ($http){
 	}
 
 	factory.addAvailability = function (availability, callback){
+		if(!availability){
+			availability = {};
+		}
 		availability.name = user;
 		$http.post('/create', availability).success(function (res) {
-			availabilities.push(res);
-			callback(availabilities);
+			if(res.error){
+				callback(res);
+			}
+			else{
+				availabilities.push(res);
+				callback(availabilities);
+			}
 		})
 	}
 
 	factory.updateAvailability = function (update, callback){
+		if(!update){
+			update = {};
+		}
 		update.name = user;
 		$http.put('/update/'+route_id, update).success(function (res) {
-			availabilities.splice(availabilities.indexOf(update),1);
-			availabilities.push(res);
-			callback(availabilities);
+			if(res.error){
+				callback(res);
+			} else {
+				availabilities.splice(availabilities.indexOf(update),1);
+				availabilities.push(res);
+				callback(availabilities);
+			}
 		})
 	}
 
 	factory.removeAvailability = function (info, callback) {
-		$http.post('/destroy', {_id:info._id}).success(function (){
-			availabilities.splice(availabilities.indexOf(info),1);
-			callback(availabilities);
+		$http.post('/destroy', info).success(function (res){
+			if(res){
+				callback(res);
+			} else {
+				availabilities.splice(availabilities.indexOf(info),1);
+				callback(availabilities);
+			}
 		})
 	}
 
+
+//review + like
 	factory.addReview = function (review, callback){
 		review.name = user;
 		review.like = 0;

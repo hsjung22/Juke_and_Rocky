@@ -1,6 +1,6 @@
 myAppModule.controller('availabilitiesController', function ($scope, $location, availabilityFactory){
 
-	availabilityFactory.getUser(function (data) {
+	availabilityFactory.getSession(function (data) {
 		$scope.currentUser = data;
 		if($scope.currentUser == ''){
 			$location.path('/');

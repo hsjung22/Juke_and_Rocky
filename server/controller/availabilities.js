@@ -3,20 +3,31 @@ var Availability = mongoose.model('Availability');
 
 module.exports = {
 	save: function(req,res) {
-		var availability = new Availability(req.body);
-		availability.save(function (err, results) {
-			if (err) {
-				console.log(err)
-			} else {
-				res.json(results)
-			}
-		})
+
+		if(!req.body.daycare_name ||
+			!req.body.address ||
+			!req.body.price ||
+			!req.body.email ||
+			!req.body.about)
+		{
+			res.json({error: "Fields cannot be empty!"});
+		}
+		else {
+			var availability = new Availability(req.body);
+			availability.save(function (err, results) {
+				if (err) {
+					res.end();
+				} else {
+					res.json(results)
+				}
+			})
+		}
 	},
 
 	show: function(req,res){
 		Availability.find({}, function (err,results) {
 			if(err){
-				console.log(err);
+				res.end();
 			} else {
 				res.json(results);
 			}
@@ -26,7 +37,7 @@ module.exports = {
 	showOne: function(req,res){
 		Availability.findOne({_id: req.params.id}).populate('reviews').exec(function (err, results) {
 			if(err){
-				console.log({err: err});
+				res.end();
 			} else {
 				res.json(results);
 			}
@@ -34,9 +45,9 @@ module.exports = {
 	},
 
 	destroy: function(req,res){
-		Availability.remove(req.body, function (err, results){
+		Availability.remove({_id:req.body._id}, function (err, results){
 			if (err){
-				console.log(err);
+				res.end();
 			} else {
 				console.log('successfully deleted');
 				res.end();
@@ -45,13 +56,23 @@ module.exports = {
 	},
 
 	update: function(req,res){
-		Availability.update({_id: req.params.id}, req.body, function (err, updates){
-			if(err){
-				console.log(err);
-			} else {
-				console.log('successfully updated');
-				res.json(updates);
-			}
-		})
+
+		if(!req.body.daycare_name ||
+			!req.body.address ||
+			!req.body.price ||
+			!req.body.email ||
+			!req.body.about)
+		{
+			res.json({error: "Fields cannot be empty!"});
+		} else {
+			Availability.update({_id: req.params.id}, req.body, function (err, updates){
+				if(err){
+					res.end();
+				} else {
+					console.log('successfully updated');
+					res.json(updates);
+				}
+			})
+		}
 	}
 };

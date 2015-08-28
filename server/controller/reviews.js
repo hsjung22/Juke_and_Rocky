@@ -12,7 +12,7 @@ module.exports = {
 			review.save(function (err, results){
 				availability.save(function (err){
 					if (err) {
-						console.log(err);
+						res.end();
 					} else {
 						res.json(results);
 					}
@@ -24,7 +24,7 @@ module.exports = {
 	updateLike: function(req,res){
 		Review.update(req.body, {$inc: {'like': 1}}, function (err, likes) {
 			if (err) {
-				console.log(err);
+				res.end();
 			} else {
 				res.json(likes);
 			}

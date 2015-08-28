@@ -1,6 +1,6 @@
 myAppModule.controller('createAvailabilityController', function ($scope, $location, availabilityFactory){
 
-	availabilityFactory.getUser(function (data) {
+	availabilityFactory.getSession(function (data) {
 		$scope.currentUser = data;
 		if($scope.currentUser == ''){
 			$location.path('/');
@@ -10,9 +10,13 @@ myAppModule.controller('createAvailabilityController', function ($scope, $locati
 
 	$scope.addAvailability = function (){
 		availabilityFactory.addAvailability($scope.newAvailability, function (data) {
-			$scope.availabilities = data;
-			$location.path('/index');
-			$location.replace();
+			if(data.error){
+				$scope.error_message = data.error;
+			} else {
+				$scope.availabilities = data;
+				$location.path('/index');
+				$location.replace();
+			}
 		})
 		$scope.newAvailability = {};
 	};

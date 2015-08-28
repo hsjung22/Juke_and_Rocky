@@ -5,8 +5,12 @@ module.exports = function(app) {
 
 //user session
 	app.post('/session', function (req, res){
-		req.session.name = req.body.newUser;
-		res.end();
+		if(!req.body.newUser){
+			res.json({error: "Name cannot be empty!"});
+		} else {
+			req.session.name = req.body.newUser;
+			res.end();
+		}
 	});
 
 	app.get('/session', function (req,res){
@@ -32,7 +36,12 @@ module.exports = function(app) {
 	});
 
 	app.post('/destroy', function (req,res) {
-		availabilities.destroy(req,res);
+		// checking if logged in user is indeed the owner of appointment
+		if(req.session.name !== req.body.name){
+			res.json({error: "You are not the owner!"})
+		} else {
+			availabilities.destroy(req,res);
+		}
 	});
 
 	app.put('/update/:id', function (req,res){

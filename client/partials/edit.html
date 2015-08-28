@@ -1,33 +1,27 @@
 <div ng-controller="editAvailabilityController">
 
-<h1>This is edit page</h1>
+	<h1>This is edit page</h1>
 
-<p>{{availability._id}}</p>
+	<p>{{availability._id}}</p>
 
-<a href="#/show/{{availability._id}}">Back</a>
+	<a href="#/show/{{availability._id}}">Back</a>
 
-<button ng-click="removeAvailability(availability)">Delete</button>
+	<button ng-click="removeAvailability(availability)">Delete</button>
+	<p>{{remove_error_message}}</p>
+	<br><br><br><br>
 
-<br><br><br><br>
-
-<form>
-	<label>Daycare name:</label>
-	<input type="text" ng-model="editAvailability.daycare_name"><br>
-	<label>Address:</label>
-	<input type="text" ng-model="editAvailability.address"><br>
-	<label>price:</label>
-	<input type="text" ng-model="editAvailability.price"><br>
-	<label>email:</label>
-	<input type="email" ng-model="editAvailability.email"><br>
-	<label>Availability details:</label>
-	<textarea ng-model="editAvailability.about"></textarea><br>
-	<input type="submit" value="Edit" ng-click="updateAvailability()">
-</form>
-
-
-
-
-
-
-
+	<form>
+		<label>Daycare name:</label>
+		<input type="text" ng-model="editAvailability.daycare_name"><br>
+		<label>Address:</label>
+		<input type="text" ng-model="editAvailability.address"><br>
+		<label>price:</label>
+		<input type="text" ng-model="editAvailability.price"><br>
+		<label>email:</label>
+		<input type="email" ng-model="editAvailability.email"><br>
+		<label>Availability details:</label>
+		<textarea ng-model="editAvailability.about"></textarea><br>
+		<input type="submit" value="Edit" ng-click="updateAvailability()">
+	</form>
+	<p>{{update_error_message}}</p>
 </div>
