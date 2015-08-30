@@ -1,69 +1,83 @@
 <div ng-controller="showAvailabilityController">
+<div class="container">
 
-
-<h3>Reviews</h3>
-
-	<form>
-		<textarea palceholder="reviews" ng-model="newReview.review"></textarea>
-		<input type="submit" value="Review" ng-click="addReview()">
-	</form>
-
-	<br><br>
-
-	<table>
-		<tbody>
-			<tr ng-repeat = "review in availability.reviews | orderBy: 'date' | orderBy: '-like' ">
-				<td>{{review.name}}</td>
-				<td>{{review.review}}</td>
-				<td>{{review.date | date: 'MMMM d yyyy'}}</td>
-				<td>{{review.like}} like(s)
-					<button ng-click = 'addLike(review._id)' class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span></button>
-				</td>
-			</tr>	
-		</tbody>
-	</table>
-
-
-
-
-
-
-<h1>THis is the show page</h1>
-
-<a href="#/index">Back</a>
-<br>
-
-
-			<p>{{availability.daycare_name}}</p>
-			<!-- <p>{{availability.address}}</p> -->
+	<div class="row top10">
+		<div class="col-md-12">
+			<h1>{{availability.daycare_name}}</h1>
+		</div>
+		<div class="col-md-8">
 			<p>{{availability.about}}</p>
-			<p>{{availability.price}}</p>
+			<p>Rate: {{availability.price}}</p>
+			<a class="btn btn-default btn-yellow" href="#/index">Back</a>
+		</div>
+		<div class="col-md-3">
+			<div class="row">
+				<p><a class="btn btn-default btn-yellow" href="#/bookings/{{availability._id}}/create">Book it!</a>
+				<div ng-if="currentUser == availability.name">
+					<a class="btn btn-default btn-yellow" href="#/{{availability._id}}/edit">Edit</a>
+				</div></p>
+			</div>
+			<div class="row">
+				<p class="top20 small_txt">*You can only Edit if you are the owner</p>
+			</div>
+		</div>
+		<div class="col-md-1">
+			<img src="pic/beagle.png" alt="puppy">
+		</div>
+	</div>
+
+</div>
+
+<div class="border-bot mid-space">
+</div>
+
+<div class="container">
 
 
+	<div class="row mid-space">
+		<div class="col-md-7">
+			<h3>Reviews</h3>
 
+			<form>
+				<div class="form-group">
+					<textarea rows="3" class="form-control" placeholder="How was your experience?" ng-model="newReview.review"></textarea>
+				</div>
+					<button type="submit" class="btn btn-yellow btn-default" ng-click="addReview()">Submit</button>
+			</form>
+
+			<div class="top20" ng-repeat = "review in availability.reviews | orderBy: '-like'">
+				<div class="row">
+					<div class="col-md-10">
+						<p><strong>{{review.name}}</strong>: &nbsp{{review.review}}</p>
+            			<p class="comment-time"><em>{{review.date | date: 'M/d/yyyy'}}</em></p>
+        			</div>
+        			<div class="col-md-2">
+            			<button ng-click = 'addLike(review._id)' class="btn btn-default"><img src="pic/heart.png" alt="heart"></button><p>{{review.like}} like(s) </p>
+        			</div>
+				</div>
+			</div>
+
+
+		</div>
+		<div class="col-md-5">
 			<section>
 				<iframe
-					width="600"
-					height="450"
+					width="470"
+					height="550"
 					frameborder="0" style="border:0"
 					ng-src="{{someUrl}}" allowfullscreen>
 				</iframe>
 			</section>
+		</div>
+	</div>
 
-<p>details regarding details like map and shit</p>
 
 
-<p>Book it!</p>
-<a href="#/bookings/{{availability._id}}/create">create appointment</a>
 
-<br>
 
-<p>you can only edit if you are the user=logged in user</p>
 
-<div ng-if="currentUser == availability.name">
-	<a href="#/{{availability._id}}/edit">Edit</a>
-</div>
 
  
 
+</div>
 </div>

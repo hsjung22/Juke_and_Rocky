@@ -1,44 +1,47 @@
 <div ng-controller="availabilitiesController">
-
-	<a href="#/"><button ng-click="removeSession()">Logout</button></a>
-
+<div class="container">
 
 
-	<h1>This is index page..hi! {{currentUser}}</h1>
+	<div class ="row">
+		<div class="col-md-10">
+			<h1>Welcome {{currentUser}}!</h1>
+		</div>
+		<div class="col-md-2">
+			<button class="top20 btn btn-default btn-logout pull-right" ng-click="removeSession()">Logout</button>
+		</div>
+	</div>
 
-	<a href="#/create">Create</a>
-
-
-	<p>list of available daycares</p>
-	<input type="text" ng-model="filter_daycare" placeholder="search daycares">
-
-
-	<table>
-		<thead>
-			<tr>
-				<th>name</th>
-				<th>Daycare name</th>
-				<th>Location</th>
-				<th>about</th>
-				<th>price</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat = "avail in availabilities | filter: filter_daycare">
-				<td>{{avail.name}}</td>
-				<td>{{avail.daycare_name}}</td>
-				<td>{{avail.address}}</td>
-				<td>{{avail.about}}</td>
-				<td>{{avail.price}}</td>
-				<td><a href="#/show/{{avail._id}}">Details (show page)</a></td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="row top20">
+		<div class="col-md-9">
+			<p>List of available daycares to choose from!</p>
+			<input class="search-by" type="text" ng-model="filter_daycare" placeholder="search by name or location">
 
 
-
-
-
-
-
+			<table class="table table-striped top20">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Location</th>
+						<th>price</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat = "avail in availabilities | filter: filter_daycare">
+						<td>{{avail.daycare_name}}</td>
+						<td>{{avail.address}}</td>
+						<td>{{avail.price}}</td>
+						<td><a href="#/show/{{avail._id}}">Details</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-md-3 text-center">
+			<div class="row">
+				<p class="pull-right">Or.. host a daycare!</p>
+				<a class="btn btn-yellow btn-create btn-default pull-right" href="#/create">Create!</a>
+			</div>
+		</div>
+	</div>
+</div>
 </div>

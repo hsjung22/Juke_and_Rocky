@@ -1,23 +1,26 @@
 <div ng-controller="bookAvailabilityController">
+<div class="container">
+	<h1 class="text-center">Send {{availability.name}} an Email to book a session!</h1>
+	<div class="col-md-6 col-md-offset-3">
 
-	<h1>Send {{availability.name}} an Email and book a session!</h1>
-
-	<form ng-action="MAILTO:{{sendEmail}}" method="post" enctype="text/plain">
-		<label>Name:</label>
-		<input type="text" name="name" value="{{currentUser}}"> </br>
-		<label>mail:</label>
-		<input type="email" name="mail" placeholder="your_email@example.com"> <br>
-		<label>message:</label>
-		<input type="text" name="message" placeholder="your message!">
-		<input type="submit" value="Send">
-		<input type="reset" value="Reset">
+	<form class="top20 bot20" ng-action="MAILTO:{{sendEmail}}" method="post" enctype="text/plain">
+		<div class="form-group">
+			<label>Name:</label>
+			<input class="form-control" type="text" name="name" value="{{currentUser}}">
+		</div>
+		<div class="form-group">
+			<label>Mail:</label>
+			<input class="form-control" type="email" name="mail" placeholder="your_email@example.com">
+		</div>
+		<div class="form-group">
+			<label>Message:</label>
+			<textarea class="form-control" rows="4" type="text" name="message" placeholder="your message!"></textarea>
+		</div>
+		<button class="btn btn-default btn-yellow" type="submit">Send</button>
+		<button class="btn btn-default btn-yellow" type="reset">Reset</button>
+		<img class="pull-right" src="pic/chi.png" alt="puppy">
 	</form>
-
-
-
-	<p>{{availability.email}}</p>
-
 	<a href="#/show/{{availability._id}}">Back</a>
-
-
+	</div>
+</div>
 </div>

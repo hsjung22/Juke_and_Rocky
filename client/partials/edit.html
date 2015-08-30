@@ -1,27 +1,35 @@
 <div ng-controller="editAvailabilityController">
-
-	<h1>This is edit page</h1>
-
-	<p>{{availability._id}}</p>
-
-	<a href="#/show/{{availability._id}}">Back</a>
-
-	<button ng-click="removeAvailability(availability)">Delete</button>
-	<p>{{remove_error_message}}</p>
-	<br><br><br><br>
-
-	<form>
-		<label>Daycare name:</label>
-		<input type="text" ng-model="editAvailability.daycare_name"><br>
-		<label>Address:</label>
-		<input type="text" ng-model="editAvailability.address"><br>
-		<label>price:</label>
-		<input type="text" ng-model="editAvailability.price"><br>
-		<label>email:</label>
-		<input type="email" ng-model="editAvailability.email"><br>
-		<label>Availability details:</label>
-		<textarea ng-model="editAvailability.about"></textarea><br>
-		<input type="submit" value="Edit" ng-click="updateAvailability()">
-	</form>
-	<p>{{update_error_message}}</p>
+<div class="container">
+	<div class="col-md-6 col-md-offset-3">
+		<h1>Edit Page!</h1>
+		<form class="top20 bot20">
+			<div class="form-group">
+				<label>Daycare name:</label>
+				<input class="form-control" type="text" ng-model="editAvailability.daycare_name">
+			</div>
+			<div class="form-group">
+				<label>Address:</label>
+				<input class="form-control" type="text" ng-model="editAvailability.address">
+			</div>
+			<div class="form-group">
+				<label>price:</label>
+				<input class="form-control" type="text" ng-model="editAvailability.price">
+			</div>
+			<div class="form-group">
+				<label>email:</label>
+				<input class="form-control" type="email" ng-model="editAvailability.email">
+			</div>
+			<div class="form-group">
+				<label>Availability details:</label>
+				<textarea class="form-control" rows="4" ng-model="editAvailability.about"></textarea>
+			</div>
+			<button type="submit" class="btn btn-yellow btn-default" ng-click="updateAvailability()">Edit</button>
+			<button class="btn btn-yellow btn-default" ng-click="removeAvailability(availability)">Delete</button>
+			<img class="pull-right" src="pic/golden.png" alt="puppy">
+		</form>
+		<p class="error-message">{{remove_error_message}}</p>
+		<p class="error-message">{{update_error_message}}</p>
+		<a href="#/show/{{availability._id}}">Back</a>
+	</div>
+</div>
 </div>

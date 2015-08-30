@@ -14,6 +14,8 @@ myAppModule.controller('availabilitiesController', function ($scope, $location, 
 
 	$scope.removeSession = function() {
 		availabilityFactory.removeSession();
+		$location.path('/');
+		$location.replace();
 	}
 
 })

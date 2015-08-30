@@ -1,25 +1,37 @@
 <div ng-controller="createAvailabilityController">
+	<div class="container">
+		<div class="col-md-6 col-md-offset-3">
+			<h1>Become a daycare host!</h1>
+			<form class="top20 bot20">
+				<div class="form-group">
+					<label>Daycare Name</label>
+					<input class="form-control" placeholder="ex. Mike's Daycare" type="text" ng-model="newAvailability.daycare_name">
+				</div>
+				<div class="form-group">
+					<label>Address</label>
+					<input class="form-control" placeholder="ex. 1980 Zanker Rd #30, San Jose" type="text" ng-model="newAvailability.address">
+				</div>
+				<div class="form-group">
+					<label>Price:</label>
+					<input class="form-control" placeholder="ex. $12/full-day" type="text" ng-model="newAvailability.price">
+				</div>
+				<div class="form-group">
+					<label>Email:</label>
+					<input class="form-control" placeholder="ex. foobar@example.com" type="email" ng-model="newAvailability.email">
+				</div>
+				<div class="form-group">
+					<label>Availability details:</label>
+					<textarea rows="4" class="form-control" placeholder="ex. Hello. I am usually available to doggie sit on the weekends. I have two friendly poodles on my own who are ready to make new friends! Contact me!" ng-model="newAvailability.about"></textarea>
+				</div>
+				<button type="submit" class="btn btn-yellow btn-default" ng-click="addAvailability()">Create</button>
+				<img class="pull-right" src="pic/corgi.png" alt="puppy">
+			</form>
 
+			<p class="error-message">{{error_message}}</p>
+			<a class="top20" href="#/index">Back to index</a>
 
-	<h1>This is create page where you create your availability+ details</h1>
-
-
-	<form>
-		<label>Daycare name:</label>
-		<input type="text" ng-model="newAvailability.daycare_name"><br>
-		<label>Address:</label>
-		<input type="text" ng-model="newAvailability.address"><br>
-		<label>price:</label>
-		<input type="text" ng-model="newAvailability.price"><br>
-		<label>email:</label>
-		<input type="email" ng-model="newAvailability.email"><br>
-		<label>Availability details:</label>
-		<textarea ng-model="newAvailability.about"></textarea><br>
-		<input type="submit" value="Create" ng-click="addAvailability()">
-	</form>
-
-	<p>{{error_message}}</p>
-	<a href="#/index">Back to index</a>
-
+		</div>
+	</div>
 
 </div>
+
