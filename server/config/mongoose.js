@@ -3,7 +3,8 @@ var fs = require('fs');
 
 
 //connect to the database
-mongoose.connect('mongodb://localhost/jukeandrocky');
+var uri = "mongodb://heroku_wb5n0r89:gb7jqin91jg4ctkeliaqlu2qru@ds139715.mlab.com:39715/heroku_wb5n0r89"
+mongoose.connect(uri);
 
 
 //loads all of the model files
