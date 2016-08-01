@@ -7,6 +7,7 @@ var fs = require('fs');
 // var uri = "mongodb://heroku_wb5n0r89:gb7jqin91jg4ctkeliaqlu2qru@ds139715.mlab.com:39715/heroku_wb5n0r89"
 var uri = process.env.MONGOLAB_URI || 
 		  process.env.MONGOHQ_URL ||
+		  "mongodb://heroku_wb5n0r89:gb7jqin91jg4ctkeliaqlu2qru@ds139715.mlab.com:39715/heroku_wb5n0r89" ||
 		  'mongodb://localhost/jukeandrocky';
 
 
