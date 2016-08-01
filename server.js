@@ -12,6 +12,6 @@ app.use(session({secret: 'codingdojorocks'}));
 require('./server/config/mongoose.js');
 require('./server/config/routes.js')(app);
 
-app.listen(process.env.Port || 5000, function(listen) {
+app.listen(process.env.PORT || 5000, function(listen) {
 	console.log('cool stuff on: 5000');
 });
